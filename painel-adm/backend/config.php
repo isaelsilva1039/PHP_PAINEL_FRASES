@@ -9,8 +9,6 @@ $email_adm = "isaelsilva1039@gmail.com";
 $servidor = 'localhost';
 $usuario  = 'root';
 $senha    = '';
-$banco    ='oficina';
-
-
+$banco    ='mundofrases';
 
 ?>
