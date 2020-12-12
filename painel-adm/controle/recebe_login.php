@@ -13,7 +13,7 @@ $lei = new Leiturasbanco();
         if ($sql->rowCount() > 0) {
             $dados = $sql->fetch();
             $id = $_SESSION['idUsuario'] = $dados['id'];      
-            $_SESSION['logado'] = "sim";
+           
             header("location: ../index.php");
         } else {
            header("location: ../../index.php?login='erro' ");

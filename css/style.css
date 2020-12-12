@@ -1,10 +1,22 @@
-.direita{
-   position:absolute;
-   right:20px;
+.direita {
+    position: absolute;
+    right: 20px;
 }
 
-.topo{
-   position:absolute;
-   top:0px;
+.topo {
+    position: absolute;
+    top: 0px;
 }
 
+.card {
+    background: red;
+    height: 100px;
+    width: 100px;
+}
+
+.cadmaster {
+    height: 200px;
+    width: 200px;
+    border: 10px;
+    background: red;
+}

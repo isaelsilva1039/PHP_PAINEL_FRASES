@@ -35,6 +35,7 @@ class Leiturasbanco extends Conexao
         if ($sql->rowCount() > 0) {
             $dados = $sql->fetch();
             $_SESSION['idUsuario'] = $dados['id'];
+            
             $_SESSION['logado'] = "sim";
             header("location: ../index.php");
         } else {
@@ -42,6 +43,7 @@ class Leiturasbanco extends Conexao
         }
     }
 
+    
     public function usuarioLogado()
     {
         $pdo = parent::get_instace();

@@ -1,21 +1,28 @@
 <?php
+
 include_once('../painel-adm/backend/leitura_banco.php');
-include_once('../painel-adm/backend/calss_cadasteos.php');
 $lei = new Leiturasbanco();
+
+if (!isset($_SESSION['idUsuario'])) {
+    header("location: ../index.php");
+}
 
 //variaveis para o menu
 $pag = @$_GET["pag"];
 $menu1 = "posts";
-$menu2 = "menu2";
+$menu2 = "meus_postes";
+$menu3 = "card";
+
 
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<!-- <html lang="pt-br"> -->
 
 <head>
 
     <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -30,7 +37,6 @@ $menu2 = "menu2";
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
-
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 
@@ -91,11 +97,9 @@ $menu2 = "menu2";
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Dados XX:</h6>
-                        <!-- <a class="collapse-item" href="index.php?pag=<?php echo $menu3 ?>">Menu 3</a>
-                            <a class="collapse-item" href="index.php?pag=<?php echo $menu4 ?>">Menu 4</a>
-                            <a class="collapse-item" href="index.php?pag=<?php echo $menu5 ?>">Menu 5</a>
-                            <a class="collapse-item" href="index.php?pag=<?php echo $menu6 ?>">Menu 6</a> -->
+                        <h6 class="collapse-header">Cards:</h6>
+                             <a class="collapse-item" href="index.php?pag=<?php echo $menu3 ?>" >card</a>
+                           
                     </div>
                 </div>
             </li>
@@ -138,7 +142,7 @@ $menu2 = "menu2";
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <img class="mt-2" src="../img/logo.png" width="150">
+                    <!-- <img class="mt-2" src="../img/logo.png" width="150"> -->
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -168,17 +172,25 @@ $menu2 = "menu2";
                     </ul>
 
                 </nav>
+
+
+
+                <!-- Topbar -->
+               
+
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    
+
                     <?php if (@$pag == null) {
                         @include_once("home.php");
                     } else if (@$pag == $menu1) {
                         @include_once(@$menu1 . ".php");
                     } else if (@$pag == $menu2) {
                         @include_once(@$menu2 . ".php");
+                    } else if(@$pag == $menu3){
+                        @include_once(@$menu3 . ".php");
                     } else {
                         @include_once("home.php");
                     }
